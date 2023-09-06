@@ -3,11 +3,12 @@ let systmsq = [];
 let start = false;
 
 let h2 = document.querySelector("h2");
-let levelcount = 0  ;
+let levelcount;
 let box = [".red",".green",".blue",".pink"];
 let level = document.querySelector("h2");
 
 document.addEventListener("keypress",function(){
+    levelcount = 0 ;
     if(start == false){
         start = true;
         console.log("Game Started");
@@ -31,6 +32,7 @@ function checkans(idx){
     if(systmsq[idx] === usersq[idx]){
         console.log("matched");
       if(systmsq.length === usersq.length){
+        levelcount++;
          setTimeout(() => {
              levelup();
          }, 1000);
@@ -41,7 +43,7 @@ function checkans(idx){
     }
 };
 function flash(btn){
-  levelcount++;
+ 
   h2.innerText = `Level-${levelcount}`;
   
   btn.classList.add("flash");
@@ -75,13 +77,13 @@ function ussertoch(){
 }
 
 function gameoverr(){
-  gameover();
+    
+    gameover();
     start = false;
     usersq = [];
     systmsq = [];
     h2.innerText = `Game Over Your Score is ${levelcount} Press Any Key to start`;
     gameoveraudi();
-    levelcount = 0;
 }
 
 function gameover() {
@@ -94,7 +96,7 @@ function gameover() {
   
 
     // Reset the game
-    levelcount = 0;
+    
     h2.innerText = "Level-0";
     usersq = [];
     systmsq = [];
